@@ -17,7 +17,6 @@ class AddEstadoTable extends Migration
             $table->increments('codigo');
             $table->string('nome');
             $table->string('sigla');
-            $table->string('numeracao_ibge');
             $table->string('codigo_pais');
             $table->timestamps();
         });
