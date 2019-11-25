@@ -81,11 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    QuimIFica
+                    Quim<span style="color: green">I</span><span style="color: red">F</span>ica
                 </div>
 
                 <div class="links">
-                    <a href="/atividades">Atividades</a>
+                    <a href="/conteudo">Conteúdo</a>
                     <a href="">Laracasts</a>
                     <a href="">News</a>
                     <a href="">Blog</a>

@@ -29,8 +29,6 @@ class PaisTable extends Migration
      */
     public function down()
     {
-        Schema::table('pais', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('pais');
     }
 }

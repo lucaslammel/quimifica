@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/publicacao/{id}', 'publicacaoController@show');
+
+Route::get('/conteudo/{id}', function () {
+    return view('conteudo');
+});
+
 Route::get('/cadastro', function () {
     return view('cadastro');
 });
@@ -25,3 +31,4 @@ Route::get('/login', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
