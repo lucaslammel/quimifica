@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/listapub', 'publicacaoController@index');
 
 Route::get('/publicacao/{id}', 'publicacaoController@show');
 

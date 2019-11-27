@@ -13,4 +13,10 @@ class publicacaoController extends Controller
     	//dd($publicacao);
     	return view('publicacao',['pub' => $publicacao]);
     }
+    public function index()
+    {
+    	$listapublicacao = publicacao::all();
+    	//dd($publicacao);
+    	return view('listapub',['publicacoes' => $listapublicacao]);
+    }
 }

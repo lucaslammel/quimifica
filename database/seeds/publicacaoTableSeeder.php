@@ -21,6 +21,15 @@ class publicacaoTableSeeder extends Seeder
             'conteudo_id' => '1'//$table->integer('coteudo_id');
         
         ]);
+
+        publicacao::create([
+            
+            'titulo' => 'Éter',//$table->string('titulo');
+            'texto' => 'asdasdasdasasd',//$table->string('texto');
+            'user_id' => '1',//$table->integer('user_id');
+            'conteudo_id' => '1'//$table->integer('coteudo_id');
+        
+        ]);
     }
     }
 
