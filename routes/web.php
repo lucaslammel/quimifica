@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/publicacao/{id}', 'publicacaoController@show');
 
 Route::get('/conteudo/{id}', function () {
