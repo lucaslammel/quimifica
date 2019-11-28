@@ -15,7 +15,7 @@ class conteudoTableSeeder extends Seeder
     {
         conteudo::create([
         'titulo' => 'Química Orgânica',
-        'descricao' => 'A Química Orgânica estuda a composição e as propriedades dos compostos que apresentam o carbono como principal elemento químico.',
+        'descricao' => 'A Química Orgânica estuda a composição e as propriedades dos compostos que apresentam o carbono como principal elemento químico. fodase',
         'user_id' => '1']);
     }
 }
