@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/listapub', 'publicacaoController@index');
+Route::get('/publicacao/create', 'publicacaoController@create');
+
+Route::post('/publicacao', 'publicacaoController@store');
+
+Route::get('/publicacao', 'publicacaoController@index');
 
 Route::get('/publicacao/{id}', 'publicacaoController@show');
 

@@ -30,6 +30,24 @@ class publicacaoTableSeeder extends Seeder
             'conteudo_id' => '1'//$table->integer('coteudo_id');
         
         ]);
+
+        publicacao::create([
+            
+            'titulo' => 'Fenol',//$table->string('titulo');
+            'texto' => 'o ester é uma parte da quimica orgânica que...',//$table->string('texto');
+            'user_id' => '1',//$table->integer('user_id');
+            'conteudo_id' => '1'//$table->integer('coteudo_id');
+        
+        ]);
+
+        publicacao::create([
+            
+            'titulo' => 'Enol',//$table->string('titulo');
+            'texto' => 'asdasdasdasasd',//$table->string('texto');
+            'user_id' => '1',//$table->integer('user_id');
+            'conteudo_id' => '1'//$table->integer('coteudo_id');
+        
+        ]);
     }
     }
 

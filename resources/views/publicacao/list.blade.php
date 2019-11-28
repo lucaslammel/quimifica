@@ -5,9 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>QuimIFica</title>
-
-        <!-- Fonts -->
-
+        @if(\Session::has('success'))
+        <div class="container">
+            <div class="alert alert-success">
+                {{\Session::get('success')}}
+            </div>
+        </div>
+        @endif
         <!-- Styles -->
             </head>
     <body>
