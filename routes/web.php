@@ -23,6 +23,14 @@ Route::get('/publicacao', 'publicacaoController@index');
 
 Route::get('/publicacao/{id}', 'publicacaoController@show');
 
+Route::get('/publicacao/{id}/edit', 'publicacaoController@edit');
+
+Route::put('/publicacao/{id}', 'publicacaoController@update');
+
+Route::get('/publicacao/{id}/delete', 'publicacaoController@delete');
+
+Route::delete('/publicacao/{id}/delete', 'publicacaoController@destroy');
+
 Route::get('/conteudo/{id}', function () {
     return view('conteudo');
 });

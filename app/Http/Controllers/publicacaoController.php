@@ -81,7 +81,7 @@ class publicacaoController extends Controller
      */
     public function show($id)
     {
-        $publicacao = publicacao::where('id',$id)->with('conteudo')->get()->first();
+        $publicacao = publicacao::find($id);
         //dd($publicacao);
         return view('publicacao.show',['pub' => $publicacao]);
     }
@@ -92,9 +92,12 @@ class publicacaoController extends Controller
      * @param  \App\publicacao  $publicacao
      * @return \Illuminate\Http\Response
      */
-    public function edit(publicacao $publicacao)
+    public function edit($id)
     {
-        //
+        $publicacao = publicacao::find($id);
+        $result = conteudo::all();
+        //dd($publicacao);
+        return view('publicacao.edit',['pub' => $publicacao, 'result' => $result]);
     }
 
     /**
@@ -104,9 +107,37 @@ class publicacaoController extends Controller
      * @param  \App\publicacao  $publicacao
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, publicacao $publicacao)
+    public function update(Request $request, $id)
     {
-        //
+        $messages = array(
+            'titulo.required' => 'É obrigatório um título para a publicação',
+            'texto.required' => 'É obrigatória uma descrição para a publicação',
+        );
+
+        //vetor com as especificações de validações
+        $regras = array(
+            'titulo' => 'required|string|max:255',
+            'texto' => 'required',
+        );
+
+        //cria o objeto com as regras de validação
+        $validador = Validator::make($request->all(), $regras, $messages);
+
+        //executa as validações
+        if ($validador->fails()) {
+            return redirect('publicacao/$id/edit')
+            ->withErrors($validador)
+            ->withInput($request->all);
+        }
+
+        //se passou pelas validações, processa e salva no banco...
+        $obj_publicacao = publicacao::findOrFail($id);
+        $obj_publicacao->titulo =       $request['titulo'];
+        $obj_publicacao->texto = $request['texto'];
+        $obj_publicacao->conteudo_id = $request['conteudo_id'];
+        $obj_publicacao->save();
+
+        return redirect('/publicacao')->with('success', 'Publicação alterada com sucesso!!');
     }
 
     /**

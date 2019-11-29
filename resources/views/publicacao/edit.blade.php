@@ -1,4 +1,4 @@
-<h1>Formulario de Publicação</h1>
+<h1>Editar a Publicação {{$pub->id}}</h1>
 <hr>
 @if ($errors->any())
 	<div class="container">
@@ -11,11 +11,12 @@
 		</div>
 	</div>
 @endif
-<form action="/publicacao" method="post">
+<form action="/publicacao/{{$pub->id}}" method="post">
 	{{ csrf_field() }}
-	Titulo: <input type="text" name="titulo"> <br>
-	Texto:  <input type="text" name="texto">  <br>
-	Conteúdo: <select name="conteudo_id">
+    {{ method_field('PUT') }}
+	Titulo: <input type="text" name="titulo" value="{{$pub->titulo}}"> <br>
+	Texto:  <input type="text" name="texto" value="{{$pub->texto}}">  <br>
+	Conteúdo: <select name="conteudo_id" value="Selecione o conteúdo">
 	<option value="">Selecione o conteúdo</option>
 		@foreach($result as $row)
 		<option value="{{$row->id}}">{{$row->titulo}}</option>

@@ -86,8 +86,8 @@
 
                 <div class="links">
                     <a href="/conteudo">Conteúdo</a>
-                    <a href="">Laracasts</a>
-                    <a href="">News</a>
+                    <a href="/publicacoes">Publicações</a>
+                    <a href="/publicacoes/create">Criar uma publicação</a>
                     <a href="">Blog</a>
                     <a href="">Nova</a>
                     <a href="">Forge</a>
