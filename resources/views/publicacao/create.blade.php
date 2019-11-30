@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <h1>Formulario de Publicação</h1>
 <hr>
 @if ($errors->any())
@@ -13,8 +16,8 @@
 @endif
 <form action="/publicacao" method="post">
 	{{ csrf_field() }}
-	Titulo: <input type="text" name="titulo"> <br>
-	Texto:  <input type="text" name="texto">  <br>
+	<p>Titulo:</p> <input type="text" name="titulo"> <br>
+	<p>Texto:</p>  <textarea type="text" name="texto" rows="4" cols="50"></textarea>  <br>
 	Conteúdo: <select name="conteudo_id">
 	<option value="">Selecione o conteúdo</option>
 		@foreach($result as $row)
@@ -22,3 +25,4 @@
 		@endforeach
 	</select>
 	<input type="submit" value="Salvar">
+	@endsection

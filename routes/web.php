@@ -15,21 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::group(['middleware' => 'auth'], function(){
+
 Route::get('/publicacao/create', 'publicacaoController@create');
 
 Route::post('/publicacao', 'publicacaoController@store');
-
-Route::get('/publicacao', 'publicacaoController@index');
-
-Route::get('/publicacao/{id}', 'publicacaoController@show');
 
 Route::get('/publicacao/{id}/edit', 'publicacaoController@edit');
 
 Route::put('/publicacao/{id}', 'publicacaoController@update');
 
 Route::get('/publicacao/{id}/delete', 'publicacaoController@delete');
+Route::delete('/publicacao/{id}/delete', 'publicacaoController@destroy');   
+});
 
-Route::delete('/publicacao/{id}/delete', 'publicacaoController@destroy');
+
+Route::get('/publicacao', 'publicacaoController@index');
+
+Route::get('/publicacao/{id}', 'publicacaoController@show');
 
 Route::get('/conteudo/{id}', function () {
     return view('conteudo');

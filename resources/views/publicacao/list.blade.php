@@ -25,9 +25,9 @@
         </div>
             
 
-<table border="0">
+<table>
     @foreach($publicacoes as $pub)
-<tr style="background-color: lightgrey">
+<tr style="border: 1">
 <td><a href="/publicacao/{{$pub->id}}" style="text-decoration: none"><p style="font-family: 'Arial'; font-size: 30px">{{$pub->titulo}}</p></td>
 <td><a href="/conteudo/{{$pub->conteudo->id}}" style="text-decoration: none"><p style="font-family: 'Arial'; font-size:20px; border: 20px">{{$pub->conteudo->titulo}}</p></td>
 </tr>

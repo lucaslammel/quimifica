@@ -18,7 +18,7 @@
   display: block;
 }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
   <a class="navbar-brand" href="/">Quim<span style="text-color:green">I</span><span style="text-color: red">Fica</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
@@ -28,24 +28,24 @@
       <li class="nav-item active">
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <div class="container">
         <div class="dropdown">Conteúdo
         <div class="dropdown-content">
           <p><a href="/publicacao">Visualizar Conteúdos</a></p>
           <p><a href="/publicacao/create">Criar Conteúdos</a></p>
           </div>
         </div>
-        </a>
+        </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+          <div class="container">
           <div class="dropdown">Publicação
         <div class="dropdown-content">
           <p><a href="/publicacao">Visualizar Publicações</a></p>
           <p><a href="/publicacao/create">Criar Publicações</a></p>
           </div>
         </div>
-        </a>
+        </div>
       </li>
     </ul>
     @guest
