@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -86,8 +89,8 @@
 
                 <div class="links">
                     <a href="/conteudo">Conteúdo</a>
-                    <a href="/publicacoes">Publicações</a>
-                    <a href="/publicacoes/create">Criar uma publicação</a>
+                    <a href="/publicacao">Publicações</a>
+                    <a href="/publicacao/create">Criar uma publicação</a>
                     <a href="">Blog</a>
                     <a href="">Nova</a>
                     <a href="">Forge</a>

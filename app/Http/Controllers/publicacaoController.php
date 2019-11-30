@@ -146,8 +146,16 @@ class publicacaoController extends Controller
      * @param  \App\publicacao  $publicacao
      * @return \Illuminate\Http\Response
      */
-    public function destroy(publicacao $publicacao)
+    public function delete($id)
     {
-        //
+        $obj_publicacao = publicacao::find($id);
+        return view('publicacao.delete',['publicacao' => $obj_publicacao]);
+    }
+
+    public function destroy($id)
+    {
+        $obj_publicacao = publicacao::findOrFail($id);
+        $obj_publicacao->delete($id);
+        return redirect('/publicacao')->with('success','Atividade excluída com sucesso!');
     }
 }
