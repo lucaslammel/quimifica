@@ -21,9 +21,13 @@ class AddPublicacaoTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
-        Schema::table('publicacao', function ($table) {
-            $table->foreign('conteudo_id')->references('id')->on('conteudo');
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('publicacao', function (Blueprint $table) {
+        $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
+        $table->foreign('conteudo_id')
+            ->references('id')->on('conteudo')
+            ->onDelete('cascade');
          });
     }
 

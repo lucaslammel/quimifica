@@ -71,12 +71,13 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
                         @endif
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        
                     @endauth
                 </div>
             @endif
@@ -89,12 +90,10 @@
                 <div class="links">
                     <a href="/conteudo">Conteúdo</a>
                     <a href="/publicacao">Publicações</a>
+                    @auth
                     <a href="/publicacao/create">Criar uma publicação</a>
-                    <a href="">Blog</a>
-                    <a href="">Nova</a>
-                    <a href="">Forge</a>
-                    <a href="">Vapor</a>
-                    <a href="">GitHub</a>
+                    <a href="/conteudo/create">Criar um conteúdo</a>
+                    @endauth
                 </div>
             </div>
         </div>

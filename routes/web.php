@@ -38,6 +38,10 @@ Route::get('/conteudo/{id}/edit', 'conteudoController@edit');
 
 Route::put('/conteudo/{id}', 'conteudoController@update');
 
+Route::get('/conteudo/{id}/delete', 'conteudoController@delete');
+
+Route::delete('/conteudo/{id}/delete', 'conteudoController@destroy');  
+
 });
 
 Route::get('/publicacao/pdf/{id}', 'relatorioController@publicacaoPDF');

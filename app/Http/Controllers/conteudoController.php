@@ -145,14 +145,14 @@ class conteudoController extends Controller
      */
     public function delete($id)
     {
-        $obj_publicacao = publicacao::find($id);
-        return view('publicacao.delete',['publicacao' => $obj_publicacao]);
+        $obj_conteudo = conteudo::find($id);
+        return view('conteudo.delete',['conteudo' => $obj_conteudo]);
     }
 
     public function destroy($id)
     {
-        $obj_publicacao = publicacao::findOrFail($id);
-        $obj_publicacao->delete($id);
-        return redirect('/publicacao')->with('success','Atividade excluída com sucesso!');
+        $obj_conteudo = conteudo::findOrFail($id);
+        $obj_conteudo->delete($id);
+        return redirect('/conteudo')->with('success','Atividade excluída com sucesso!');
     }
 }

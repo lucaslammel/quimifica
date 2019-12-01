@@ -28,8 +28,16 @@
 <table>
     @foreach($publicacoes as $pub)
 <tr style="border: 1">
-<td><a href="/publicacao/{{$pub->id}}" style="text-decoration: none"><p style="font-family: 'Arial'; font-size: 30px">{{$pub->titulo}}</p></td>
-<td><a href="/conteudo/{{$pub->conteudo->id}}" style="text-decoration: none"><p style="font-family: 'Arial'; font-size:20px; border: 20px">{{$pub->conteudo->titulo}}</p></td>
+<td><a href="/publicacao/{{$pub->id}}" style="text-decoration: none"><p style="font-family: 'Arial'; font-size: 20px">{{$pub->titulo}}</p></td>
+<td><a href="/conteudo/{{$pub->conteudo->id}}" style="text-decoration: none"><p style="font-family: 'Arial'; font-size:20px; border: 14px">{{$pub->conteudo->titulo}}</p></td>
+@auth
+<td><form method="get" action="/publicacao/{{$pub->id}}/delete">
+    <button type="submit">Deletar</button>
+</form></td>
+<td><form method="get" action="/publicacao/{{$pub->id}}/edit">
+    <button type="submit">Editar</button>
+</form></td>
+@endauth
 </tr>
     @endforeach
 </table>

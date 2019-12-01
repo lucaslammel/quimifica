@@ -13,7 +13,7 @@ class publicacaoTableSeeder extends Seeder
      */
     public function run()
     {
-        publicacao::create([
+        /*publicacao::create([
         	
         	'titulo' => 'Éster',//$table->string('titulo');
             'texto' => 'o ester é uma parte da quimica orgânica que...',//$table->string('texto');
@@ -47,7 +47,7 @@ class publicacaoTableSeeder extends Seeder
             'user_id' => '1',//$table->integer('user_id');
             'conteudo_id' => '1'//$table->integer('coteudo_id');
         
-        ]);
+        ]);*/
     }
     }
 

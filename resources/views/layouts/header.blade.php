@@ -49,9 +49,9 @@
       </li>
     </ul>
     @guest
-			<li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-			<li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+			<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
 			@else
+      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
 			<ul>
 				<a>{{ Auth::user()->name }}</a>
             </ul>
