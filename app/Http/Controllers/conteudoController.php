@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\publicacao;
 use App\conteudo;
+use \Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class conteudoController extends Controller
 {
@@ -14,7 +17,9 @@ class conteudoController extends Controller
      */
     public function index()
     {
-        //
+        $listaconteudo = conteudo::all();
+        //dd($conteudo);
+        return view('conteudo.list',['conteudos' => $listaconteudo]);
     }
 
     /**
@@ -24,7 +29,7 @@ class conteudoController extends Controller
      */
     public function create()
     {
-        //
+        return view('conteudo.create');
     }
 
     /**
@@ -34,8 +39,36 @@ class conteudoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $messages = array(
+            'titulo.required' => 'É obrigatório um título para o conteúdo',
+            'descricao.required' => 'É obrigatória uma descrição para o conteúdo',
+        );
+
+        //vetor com as especificações de validações
+        $regras = array(
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'required',
+        );
+
+        //cria o objeto com as regras de validação
+        $validador = Validator::make($request->all(), $regras, $messages);
+
+        //executa as validações
+        if ($validador->fails()) {
+            return redirect('conteudo/create')
+            ->withErrors($validador)
+            ->withInput($request->all);
+        }
+
+        //se passou pelas validações, processa e salva no banco...
+        $obj_conteudo = new conteudo();
+        $obj_conteudo->titulo =       $request['titulo'];
+        $obj_conteudo->descricao = $request['descricao'];
+        $obj_conteudo->user_id     = Auth::id();
+        $obj_conteudo->save();
+
+        return redirect('/conteudo')->with('success', 'Conteúdo criado com sucesso!!');
     }
 
     /**
@@ -44,9 +77,13 @@ class conteudoController extends Controller
      * @param  \App\conteudo  $conteudo
      * @return \Illuminate\Http\Response
      */
-    public function show(conteudo $conteudo)
+    public function show($id)
     {
-        //
+        $conteudo = conteudo::find($id);
+        //dd($conteudo);
+        $publicacao = publicacao::where('conteudo_id', $id)->get();
+        return view('conteudo.show',['con' => $conteudo, 'pub' => $publicacao]);
+        
     }
 
     /**
@@ -55,9 +92,10 @@ class conteudoController extends Controller
      * @param  \App\conteudo  $conteudo
      * @return \Illuminate\Http\Response
      */
-    public function edit(conteudo $conteudo)
+    public function edit($id)
     {
-        //
+        $conteudo = conteudo::find($id);
+        return view('conteudo.edit',['con' => $conteudo]);
     }
 
     /**
@@ -67,9 +105,36 @@ class conteudoController extends Controller
      * @param  \App\conteudo  $conteudo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, conteudo $conteudo)
+    public function update(Request $request, $id)
     {
-        //
+        $messages = array(
+            'titulo.required' => 'É obrigatório um título para o conteúdo',
+            'descricao.required' => 'É obrigatória uma descrição para o conteúdo',
+        );
+
+        //vetor com as especificações de validações
+        $regras = array(
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'required',
+        );
+
+        //cria o objeto com as regras de validação
+        $validador = Validator::make($request->all(), $regras, $messages);
+
+        //executa as validações
+        if ($validador->fails()) {
+            return redirect('conteudo/$id/edit')
+            ->withErrors($validador)
+            ->withInput($request->all);
+        }
+
+        //se passou pelas validações, processa e salva no banco...
+        $obj_conteudo = conteudo::findOrFail($id);
+        $obj_conteudo->titulo =       $request['titulo'];
+        $obj_conteudo->descricao = $request['descricao'];
+        $obj_conteudo->save();
+
+        return redirect('/conteudo')->with('success', 'Conteúdo alterado com sucesso!!');
     }
 
     /**
@@ -78,8 +143,16 @@ class conteudoController extends Controller
      * @param  \App\conteudo  $conteudo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(conteudo $conteudo)
+    public function delete($id)
     {
-        //
+        $obj_publicacao = publicacao::find($id);
+        return view('publicacao.delete',['publicacao' => $obj_publicacao]);
+    }
+
+    public function destroy($id)
+    {
+        $obj_publicacao = publicacao::findOrFail($id);
+        $obj_publicacao->delete($id);
+        return redirect('/publicacao')->with('success','Atividade excluída com sucesso!');
     }
 }

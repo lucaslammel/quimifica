@@ -27,17 +27,28 @@ Route::get('/publicacao/{id}/edit', 'publicacaoController@edit');
 Route::put('/publicacao/{id}', 'publicacaoController@update');
 
 Route::get('/publicacao/{id}/delete', 'publicacaoController@delete');
-Route::delete('/publicacao/{id}/delete', 'publicacaoController@destroy');   
+
+Route::delete('/publicacao/{id}/delete', 'publicacaoController@destroy');  
+
+Route::get('/conteudo/create', 'conteudoController@create');
+
+Route::post('/conteudo', 'conteudoController@store');
+
+Route::get('/conteudo/{id}/edit', 'conteudoController@edit');
+
+Route::put('/conteudo/{id}', 'conteudoController@update');
+
 });
 
+Route::get('/publicacao/pdf/{id}', 'relatorioController@publicacaoPDF');
 
 Route::get('/publicacao', 'publicacaoController@index');
 
 Route::get('/publicacao/{id}', 'publicacaoController@show');
 
-Route::get('/conteudo/{id}', function () {
-    return view('conteudo');
-});
+Route::get('/conteudo', 'conteudoController@index');
+
+Route::get('/conteudo/{id}', 'conteudoController@show');
 
 Route::get('/cadastro', function () {
     return view('cadastro');

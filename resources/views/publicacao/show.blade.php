@@ -1,4 +1,7 @@
  <!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -16,6 +19,8 @@
         </div>
             <h2>{{$pub->conteudo->titulo}}</h2>
             <p>{{$pub->texto}}</p>
+            <a href="/publicacao/pdf/{{$pub->id}}">Gerar PDF</a>
         
     </body>
+    @endsection
 </html>

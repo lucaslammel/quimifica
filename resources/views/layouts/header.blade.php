@@ -31,8 +31,8 @@
         <div class="container">
         <div class="dropdown">Conteúdo
         <div class="dropdown-content">
-          <p><a href="/publicacao">Visualizar Conteúdos</a></p>
-          <p><a href="/publicacao/create">Criar Conteúdos</a></p>
+          <p><a href="/conteudo">Visualizar Conteúdos</a></p>
+          <p><a href="/conteudo/create">Criar Conteúdos</a></p>
           </div>
         </div>
         </div>
